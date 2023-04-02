@@ -149,13 +149,24 @@
         static isMapEvent(eventId) {
             return eventId !== 0;
         }
-        static isAutoEvent(eventId) {
-            const event = $gameMap.event(eventId);
-            if (!event) {
-                return event;
-            }
-            return event.page().trigger === 3;
-        }
+ //       static isAutoEvent(eventId) {
+ //           const event = $gameMap.event(eventId);
+ //           if (!event) {
+ //               return event;
+ //           }
+ //           return event.page().trigger === 3;
+ //       }
+          static isAutoEvent(eventId) {
+              const event = $gameMap.event(eventId);
+              if (!event) {
+                  eturn false;
+              }
+              const page = event.page();
+              if (!page) {
+                  return false;
+              }
+              return page.trigger === 3;
+          }
         static isStateRecordableEvent(eventId) {
             return this.isMapEvent(eventId) && this.isAutoEvent(eventId);
         }
